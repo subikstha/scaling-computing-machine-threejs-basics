@@ -50,7 +50,7 @@ const aspectRatio = sizes.width / sizes.height;
 // );
 // camera.position.x = 2;
 // camera.position.y = 2;
-camera.position.z = 2;
+camera.position.z = 3;
 camera.lookAt(mesh.position);
 scene.add(camera);
 // console.log(camera.position.length())
@@ -70,8 +70,8 @@ const tick = () => {
   // Update objects
   //   mesh.rotation.y = elapsedTime;
   // Update camera based on mouse movement
-  camera.position.x = cursor.x * 3;
-  camera.position.y = cursor.y * 3;
+  camera.position.x = cursor.x * 10;
+  camera.position.y = cursor.y * 10;
   camera.lookAt(mesh.position);
   // Render
   renderer.render(scene, camera);
