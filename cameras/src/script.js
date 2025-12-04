@@ -1,5 +1,6 @@
 import * as THREE from "three";
-
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+console.log(OrbitControls);
 // Cursor
 const cursor = {
   x: 0,
@@ -28,7 +29,7 @@ const scene = new THREE.Scene();
 // Object
 const mesh = new THREE.Mesh(
   new THREE.BoxGeometry(1, 1, 1, 5, 5, 5),
-  new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: false })
+  new THREE.MeshBasicMaterial({ color: "#5c43f5", wireframe: false })
 );
 scene.add(mesh);
 
@@ -55,6 +56,12 @@ camera.lookAt(mesh.position);
 scene.add(camera);
 // console.log(camera.position.length())
 
+// Controls
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true;
+// controls.target.y = 2;
+// controls.update();
+
 // Renderer
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
@@ -70,10 +77,13 @@ const tick = () => {
   // Update objects
   //   mesh.rotation.y = elapsedTime;
   // Update camera based on mouse movement
-  camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 3;
-  camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 3;
-  camera.position.y = cursor.y * 5;
-  camera.lookAt(mesh.position);
+  //   camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 3;
+  //   camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 3;
+  //   camera.position.y = cursor.y * 5;
+  //   camera.lookAt(mesh.position);
+
+  //   Update Controls
+  controls.update();
   // Render
   renderer.render(scene, camera);
 
