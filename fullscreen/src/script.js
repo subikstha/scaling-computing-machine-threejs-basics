@@ -26,6 +26,20 @@ const sizes = {
     height: window.innerHeight
 }
 
+window.addEventListener('resize', () => {
+    // Update sizes on resize
+    sizes.width = window.innerWidth
+    sizes.height = window.innerHeight
+
+    // Update camera on resize
+    camera.aspect = sizes.width / sizes.height
+    camera.updateProjectionMatrix()
+
+    // Update renderer on resize
+    renderer.setSize(sizes.width, sizes.height)
+    // renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+})
+
 /**
  * Camera
  */
@@ -51,8 +65,7 @@ renderer.setSize(sizes.width, sizes.height)
  */
 const clock = new THREE.Clock()
 
-const tick = () =>
-{
+const tick = () => {
     const elapsedTime = clock.getElapsedTime()
 
     // Update controls
