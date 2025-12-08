@@ -22,10 +22,50 @@ scene.add(mesh)
  * Sizes
  */
 const sizes = {
+<<<<<<< HEAD
+    width: window.innerWidth,
+    height: window.innerHeight
+}
+
+window.addEventListener('resize', () => {
+    // Update sizes on resize
+    sizes.width = window.innerWidth
+    sizes.height = window.innerHeight
+
+    // Update camera on resize
+    camera.aspect = sizes.width / sizes.height
+    camera.updateProjectionMatrix()
+
+    // Update renderer on resize
+    renderer.setSize(sizes.width, sizes.height)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+})
+
+// Fullscreen
+window.addEventListener('dblclick', () => {
+    const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement
+    console.log('double click detected');
+    if (!fullscreenElement) {
+        if (canvas.requestFullscreen) {
+            canvas.requestFullscreen()
+        } else if (canvas.webkitFullscreenElement) {
+            canvas.webkitRequestFullscreen()
+        }
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen()
+        } else if (document.exitFullscreenElement) {
+            document.exitFullscreenElement()
+        }
+    }
+})
+
+=======
     width: 800,
     height: 600
 }
 
+>>>>>>> main
 /**
  * Camera
  */
@@ -45,14 +85,22 @@ const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
 renderer.setSize(sizes.width, sizes.height)
+<<<<<<< HEAD
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+=======
+>>>>>>> main
 
 /**
  * Animate
  */
 const clock = new THREE.Clock()
 
+<<<<<<< HEAD
+const tick = () => {
+=======
 const tick = () =>
 {
+>>>>>>> main
     const elapsedTime = clock.getElapsedTime()
 
     // Update controls
