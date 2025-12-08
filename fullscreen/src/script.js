@@ -22,6 +22,7 @@ scene.add(mesh)
  * Sizes
  */
 const sizes = {
+<<<<<<< HEAD
     width: window.innerWidth,
     height: window.innerHeight
 }
@@ -59,6 +60,12 @@ window.addEventListener('dblclick', () => {
     }
 })
 
+=======
+    width: 800,
+    height: 600
+}
+
+>>>>>>> main
 /**
  * Camera
  */
@@ -78,14 +85,22 @@ const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
 renderer.setSize(sizes.width, sizes.height)
+<<<<<<< HEAD
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+=======
+>>>>>>> main
 
 /**
  * Animate
  */
 const clock = new THREE.Clock()
 
+<<<<<<< HEAD
 const tick = () => {
+=======
+const tick = () =>
+{
+>>>>>>> main
     const elapsedTime = clock.getElapsedTime()
 
     // Update controls
