@@ -21,7 +21,7 @@ const scene = new THREE.Scene();
 /**
  * Object
  */
-debugObject.color = "#3a6ea6";
+debugObject.color = "#b8ab1e";
 const geometry = new THREE.BoxGeometry(1, 1, 1, 2, 2, 2);
 const material = new THREE.MeshBasicMaterial({ color: debugObject.color });
 const mesh = new THREE.Mesh(geometry, material);
@@ -31,8 +31,8 @@ gui.add(mesh.position, "y").min(-3).max(3).step(0.01).name("Elevation");
 gui.add(mesh, "visible");
 gui.add(material, "wireframe");
 gui.add(mesh.material, "wireframe").name("Mesh material Wireframe");
-gui.addColor(mesh.material, "color").onChange((value) => {
-  console.log(value.getHexString());
+gui.addColor(debugObject, "color").onChange(() => {
+  material.color.set(debugObject.color);
 });
 
 /**
