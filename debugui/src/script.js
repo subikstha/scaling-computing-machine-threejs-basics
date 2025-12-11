@@ -6,7 +6,13 @@ import GUI from "lil-gui";
 /**
  * Debug
  */
-const gui = new GUI();
+const gui = new GUI({
+  width: 300,
+  title: "Nice debug UI",
+});
+gui.close();
+gui.hide();
+
 const debugObject = {};
 
 /**
@@ -29,21 +35,23 @@ const material = new THREE.MeshBasicMaterial({
 });
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
+const cubeTweaks = gui.addFolder("Awesome Cube");
+cubeTweaks.close();
 // GUI Range
-gui.add(mesh.position, "y").min(-3).max(3).step(0.01).name("Elevation");
-gui.add(mesh, "visible");
-gui.add(material, "wireframe");
-gui.add(mesh.material, "wireframe").name("Mesh material Wireframe");
-gui.addColor(debugObject, "color").onChange(() => {
+cubeTweaks.add(mesh.position, "y").min(-3).max(3).step(0.01).name("Elevation");
+cubeTweaks.add(mesh, "visible");
+cubeTweaks.add(material, "wireframe");
+cubeTweaks.add(mesh.material, "wireframe").name("Mesh material Wireframe");
+cubeTweaks.addColor(debugObject, "color").onChange(() => {
   material.color.set(debugObject.color);
 });
 
 debugObject.spin = () => {
   gsap.to(mesh.rotation, { y: mesh.rotation.y + Math.PI * 2 });
 };
-gui.add(debugObject, "spin");
+cubeTweaks.add(debugObject, "spin");
 debugObject.subdivision = 2;
-gui
+cubeTweaks
   .add(debugObject, "subdivision")
   .min(1)
   .max(20)
@@ -68,6 +76,12 @@ const sizes = {
   width: window.innerWidth,
   height: window.innerHeight,
 };
+
+window.addEventListener("keydown", (e) => {
+  if (e.key === "h") {
+    gui.show(gui._hidden);
+  }
+});
 
 window.addEventListener("resize", () => {
   // Update sizes
