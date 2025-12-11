@@ -21,9 +21,12 @@ const scene = new THREE.Scene();
 /**
  * Object
  */
-debugObject.color = "#b8ab1e";
+debugObject.color = "#877adb";
 const geometry = new THREE.BoxGeometry(1, 1, 1, 2, 2, 2);
-const material = new THREE.MeshBasicMaterial({ color: debugObject.color });
+const material = new THREE.MeshBasicMaterial({
+  color: debugObject.color,
+  wireframe: true,
+});
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
 // GUI Range
@@ -35,6 +38,29 @@ gui.addColor(debugObject, "color").onChange(() => {
   material.color.set(debugObject.color);
 });
 
+debugObject.spin = () => {
+  gsap.to(mesh.rotation, { y: mesh.rotation.y + Math.PI * 2 });
+};
+gui.add(debugObject, "spin");
+debugObject.subdivision = 2;
+gui
+  .add(debugObject, "subdivision")
+  .min(1)
+  .max(20)
+  .step(1)
+  .onFinishChange(() => {
+    // We dispose of the old geometry
+    mesh.geometry.dispose();
+    // We create a brand new geometry
+    mesh.geometry = new THREE.BoxGeometry(
+      1,
+      1,
+      1,
+      debugObject.subdivision,
+      debugObject.subdivision,
+      debugObject.subdivision
+    );
+  });
 /**
  * Sizes
  */
