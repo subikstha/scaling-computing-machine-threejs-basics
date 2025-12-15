@@ -144,7 +144,7 @@ const tick = () => {
 };
 
 tick();
-// The tick function is used to animate
+// The tick function is used to animate on next frame
 // Notes
 // const array1 = [1, 2, 3];
 
