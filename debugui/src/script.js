@@ -144,3 +144,18 @@ const tick = () => {
 };
 
 tick();
+// Notes
+// const array1 = [1, 2, 3];
+
+// const test = array1.map((item) => item * 3);
+
+// function createFunction() {
+//   function multiplyBy2(num) {
+//     return num * 2;
+//   }
+//   return multiplyBy2;
+// }
+
+// const generatedFunc = createFunction();
+// const result = generatedFunc(3);
+// console.log("closure", result);
