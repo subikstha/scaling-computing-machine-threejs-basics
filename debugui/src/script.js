@@ -144,6 +144,7 @@ const tick = () => {
 };
 
 tick();
+// The tick function is used to animate
 // Notes
 // const array1 = [1, 2, 3];
 
