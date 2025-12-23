@@ -6,11 +6,11 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
  */
 const loadingManager = new THREE.LoadingManager()
 const textureLoader = new THREE.TextureLoader(loadingManager)
-const colorTexture = textureLoader.load('/textures/minecraft.png')
+const colorTexture = textureLoader.load('/color-2.jpg')
 colorTexture.colorSpace = THREE.SRGBColorSpace
 colorTexture.generateMipmaps = false
 // colorTexture.minFilter = THREE.NearestFilter
-colorTexture.magFilter = THREE.NearestFilter
+// colorTexture.magFilter = THREE.NearestFilter
 // colorTexture.repeat.x = 2
 // colorTexture.repeat.y = 3
 // colorTexture.wrapS = THREE.MirroredRepeatWrapping
@@ -47,7 +47,7 @@ const scene = new THREE.Scene()
 /**
  * Object
  */
-const geometry = new THREE.BoxGeometry(1, 1, 1)
+const geometry = new THREE.BoxGeometry(1, 0.7, 0.7)
 const material = new THREE.MeshBasicMaterial({ map: colorTexture })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
