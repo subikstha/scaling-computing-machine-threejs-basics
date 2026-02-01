@@ -55,7 +55,7 @@ const doorHeightTexture = textureLoader.load('./textures/door/height.jpg')
 const doorNormalTexture = textureLoader.load('./textures/door/normal.jpg')
 const doorMetalnessTexture = textureLoader.load('./textures/door/metalness.jpg')
 const doorRoughnessTexture = textureLoader.load('./textures/door/roughness.jpg')
-const matcapTexture = textureLoader.load('./textures/matcaps/1.png')
+const matcapTexture = textureLoader.load('./textures/matcaps/8.png')
 const gradientTexture = textureLoader.load('./textures/gradients/3.jpg')
 
 // NOTE: Textures used as map and matcap are suposed to be encoded in sRGB and we have to inform THREE JS about this
@@ -63,7 +63,24 @@ doorColorTexture.colorSpace = THREE.SRGBColorSpace
 matcapTexture.colorSpace = THREE.SRGBColorSpace
 
 // Object
-const material = new THREE.MeshBasicMaterial({ map: doorColorTexture });
+// MESHBASICMATERIAL
+// const material = new THREE.MeshBasicMaterial();
+// material.map = doorColorTexture;
+// material.color = new THREE.Color('rebeccapurple');
+// material.wireframe = true;
+// material.transparent = true;
+// material.opacity = .1
+// material.map = doorAlphaTexture;
+// material.side = THREE.DoubleSide; // This is required to see the back of the plane or to see inside of the sphere
+// We have three options for the side, DoubleSide, FrontSide and BackSide
+
+// MESHNORMALMATERIAL
+// const material = new THREE.MeshNormalMaterial()
+// material.flatShading = true;
+
+// MESHMATCAPMATERIAL
+const material = new THREE.MeshMatcapMaterial();
+material.matcap = matcapTexture;
 const sphere = new THREE.Mesh(new THREE.SphereGeometry(.5, 16, 16), material)
 
 const plane = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), material)
